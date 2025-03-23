@@ -2,17 +2,12 @@
              let-description="description"
              let-level="level"
              let-threshold="threshold">
-  <!-- @todo Buggy in case of level1! -->
-  <!--
-  LEVEL: {{ level }}
-  THRESH: {{threshold}}
-  EXP: {{expectedResult}}
-  -->
-  <div [class.youAreHere]="threshold <= expectedResult && threshold + maxPoints * thresholdDifference > expectedResult ||
-                          (threshold >= maxPoints && expectedResult > maxPoints)"
+  @let youAreHere = (threshold <= expectedResult && threshold + maxPoints * thresholdDifference > expectedResult) ||
+    (level === 1 && expectedResult < maxPoints * minRequiredPercentage) ||
+    (threshold >= maxPoints && expectedResult > maxPoints);
+  <div [class.youAreHere]="youAreHere"
        style="min-height: 50px"
-       [ngStyle]="{'filter': threshold <= expectedResult && threshold + maxPoints * thresholdDifference > expectedResult ||
-                          (threshold >= maxPoints && expectedResult > maxPoints) ? '' : 'blur(2px) grayscale(1)' }">
+       [ngStyle]="{'filter': youAreHere ? '' : 'blur(2px) grayscale(1)' }">
     <div class="image-container text-center"
          style="display: none;">
       <img *ngIf="!images.get(level)!.endsWith('.mp4') && !images.get(level)!.endsWith('.webm')"

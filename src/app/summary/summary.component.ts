@@ -18,6 +18,7 @@ export class SummaryComponent implements OnInit {
     [6, 'best.gif'],
   ]);
   maxPoints: number = configuration.length * 4;
+  minRequiredPercentage: number = 0.4;
   thresholdDifference: number = 0.15;
   constructor() { }
 
