@@ -1,0 +1,19 @@
+@for (row of Array.from({ length: 5 }); track rowIndex; let rowIndex = $index) {
+  <div class="row">
+  @for (col of Array.from({ length: 5 }); track colIndex; let colIndex = $index) {
+    @if (rowIndex === 4 && colIndex === 0) {
+      <div class="cell">
+        <img src="/assets/images/tasks/1/A/labyrinth/entrance.jpg"/>
+      </div>
+    } @else if (rowIndex === 0 && colIndex === 4) {
+      <div class="cell">
+        <img src="/assets/images/tasks/1/A/labyrinth/exit.jpg"/>
+      </div>
+    } @else {
+      <div class="cell">
+
+      </div>
+    }
+  }
+  </div>
+}
