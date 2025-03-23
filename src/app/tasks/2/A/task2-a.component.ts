@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {CPUData, GPUData} from "../../../_entities/hardware";
 
 @Component({
-  selector: 'app-task2-a',
-  templateUrl: './task2-a.component.html',
-  styleUrls: ['./task2-a.component.less']
+    selector: 'app-task2-a',
+    templateUrl: './task2-a.component.html',
+    styleUrls: ['./task2-a.component.less'],
+    standalone: false
 })
 export class Task2AComponent {
 

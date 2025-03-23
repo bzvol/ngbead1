@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {configuration} from "src/app/configuration/configuration";
 
 @Component({
-  selector: 'app-summary',
-  templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.less']
+    selector: 'app-summary',
+    templateUrl: './summary.component.html',
+    styleUrls: ['./summary.component.less'],
+    standalone: false
 })
 export class SummaryComponent implements OnInit {
   expectedResult: number = 0;

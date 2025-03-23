@@ -2,9 +2,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Task} from '../_interfaces/task';
 import {configuration} from "src/app/configuration/configuration";
 @Component({
-  selector: 'app-task-selector',
-  templateUrl: './task-selector.component.html',
-  styleUrls: ['./task-selector.component.less']
+    selector: 'app-task-selector',
+    templateUrl: './task-selector.component.html',
+    styleUrls: ['./task-selector.component.less'],
+    standalone: false
 })
 export class TaskSelectorComponent implements OnInit {
   @Input() ATask!: Task;

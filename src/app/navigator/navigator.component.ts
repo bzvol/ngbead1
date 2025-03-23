@@ -6,9 +6,10 @@ import {PreviewComponent} from "src/app/preview/preview.component";
 import {NzModalService} from "ng-zorro-antd/modal";
 
 @Component({
-  selector: 'app-navigator',
-  templateUrl: './navigator.component.html',
-  styleUrls: ['./navigator.component.less']
+    selector: 'app-navigator',
+    templateUrl: './navigator.component.html',
+    styleUrls: ['./navigator.component.less'],
+    standalone: false
 })
 export class NavigatorComponent implements OnInit {
 

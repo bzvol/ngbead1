@@ -2,9 +2,10 @@ import {Component, inject, model} from '@angular/core';
 import {NZ_MODAL_DATA, NzModalRef} from "ng-zorro-antd/modal";
 
 @Component({
-  selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.less']
+    selector: 'app-preview',
+    templateUrl: './preview.component.html',
+    styleUrls: ['./preview.component.less'],
+    standalone: false
 })
 export class PreviewComponent {
   constructor() {}

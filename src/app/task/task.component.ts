@@ -1,9 +1,10 @@
 import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.less']
+    selector: 'app-task',
+    templateUrl: './task.component.html',
+    styleUrls: ['./task.component.less'],
+    standalone: false
 })
 export class TaskComponent implements OnInit {
   @Input() configuration!: { subTasks: any };
