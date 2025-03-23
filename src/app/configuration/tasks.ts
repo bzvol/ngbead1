@@ -49,7 +49,7 @@ A játék működjön 3x3-as vagy annál nagyobb méret esetén.`,
       A cél egy közös navigáció létrehozása, amely lehetővé teszi, hogy a felhasználó egyszerűen mozoghasson az oldalak között.`,
       subTasks: [
         {
-          text: `A navigáció kialakítása előtt adj minden, a routingban szereplő aloldalnak egy "title"-t – ez az a szöveg,
+          text: `A navigáció kialakítása előtt adj minden, a routingban szereplő aloldalnak egy "title"-t - ez az a szöveg,
           amely a böngésző fülén jelenik meg.
 Ez a szöveg jelenleg minden oldalon _ChooseYourOwnBeadando_, azonban oldalanként eltérő címet kell megjeleníteni.
 
@@ -68,18 +68,19 @@ Nem kötelező, de az egységes kinézet érdekében érdemes az ng-zorro _Bread
           xp: 1
         },
         {
-          text: `Amennyiben egy feladathoz tartozó útvonalon vagyunk, legyen lehetőség bármelyik másik feladatra való gyors ugrásra.
+          text: `Amennyiben egy lépéshez/feladathoz tartozó útvonalon vagyunk, legyen lehetőség bármelyik másik lépésre való gyors ugrásra.
 
 Ez azt jelenti, hogy például a "Feladatok / 1 / B" esetén az 1-es helyén jelenjen meg egy választómező, amelyben a
-felhasználó 1-től 5-ig választhat a feladatok közül.
-A választás után azonnal navigáljunk át a kiválasztott feladat megfelelő oldalára.
+felhasználó 1-től 5-ig választhat a lépések közül.
+A választás után azonnal navigáljunk át a kiválasztott lépés megfelelő oldalára.
 Tehát, ha a "/task/1/B" oldalon voltunk épp, és a felhasználó a 3-as opciót választja, akkor a program navigáljon át a "/task/3/B" oldalra.
 
 Segítség: https://ng.ant.design/components/select/en`,
           xp: 1
         },
         {
-          text: `Az előző feladatban említett választási lehetőség valósuljon meg az A/B opciók esetén is.`,
+          text: `Az előző feladatban említett választási lehetőség valósuljon meg a feladatok szintjén is, azaz legyen lehetőség
+           hasonlóan választani az A/B opciók közül is.`,
           xp: 1
         }
       ],
@@ -89,7 +90,7 @@ Segítség: https://ng.ant.design/components/select/en`,
   {
     A: {
       imageUrl: 'assets/images/tasks/2/A/dooom.gif',
-      story: `Készíts egy űrlapot, ami segít eldönteni, hogy fogod-e tudni futtatni a DOOM: the Dark Ages játékot május 15-én.`,
+      story: `Készíts egy űrlapot, ami segít eldönteni, hogy fogod-e tudni futtatni a DOOM: The Dark Ages játékot május 15-én.`,
       subTasks: [
         {
           text: `Hozz létre egy reaktív űrlapot.
@@ -101,12 +102,12 @@ Segítség: https://ng.ant.design/components/select/en`,
 - memória mennyisége GB-ben (számmező - _nz-input-number_)
 - elérhető tárhely mennyisége GB-ben (számmező - _nz-input-number_)
 
-Az űrlaphoz hozz létre egy _FormGroup:-ot TypeScriptben, és kösd össze a HTML-ben létrehozott űrlappal a [formGroup] direktíva segítségével.
+Az űrlaphoz hozz létre egy _FormGroup_-ot TypeScriptben, és kösd össze a HTML-ben létrehozott űrlappal a [formGroup] direktíva segítségével.
 
 Az űrlapon szerepeljen egy submit gomb is.
-A gomb lenyomásakor a console.alert() segítségével írd ki, hogy a jelenlegi adatok alapján futtatható-e a DOOM: The Dark Ages, vagy sem.
+A gomb lenyomásakor a _console.alert()_ segítségével írd ki, hogy a jelenlegi adatok alapján futtatható-e a DOOM: The Dark Ages, vagy sem.
 
-Segítség: https://angular.io/guide/reactive-forms
+Segítség: https://angular.dev/guide/forms/reactive-forms
 
 https://ng.ant.design/components/select/en
 
@@ -141,7 +142,7 @@ Például: a GPU kiválasztásakor az érték lehet maga a VRAM mennyisége, his
           xp: 1
         },
         {
-          text: `Készíts egy FormGroup szintű, egyedi (custom) validációt, amely két mező együttes értékét ellenőrzi!.
+          text: `Készíts egy FormGroup szintű, egyedi (custom) validációt, amely két mező együttes értékét ellenőrzi!
 
 Ha az elérhető VRAM mennyisége kisebb mint 4GB, de a RayTracing be van kapcsolva, jelenjen meg a következő hiba:
 "A megadott paraméterekkel rendelkező GPU nem létezik!"`,
@@ -199,7 +200,7 @@ Segítség: https://ng.ant.design/components/popconfirm/en`,
           A cél, hogy a kosár tartalma újratöltés után is megmaradjon, ezért az oldal betöltésekor olvassuk vissza az eltárolt adatokat!
 
 Fontos: Teszteld le azt az esetet is, amikor a felhasználó először érkezik az oldalra - vagyis amikor a localStorage vagy a süti még üres.
-Ebben az esetben is megfelelően kell működnie az alkalmazásnak.`,
+Ebben az esetben is megfelelően kell működnie az alkalmazásnak!`,
           xp: 1
         }
       ],
@@ -224,7 +225,7 @@ Az űrlap alapján a háttérben hozz létre egy objektumot, amely 4 mezőt tart
           xp: 1
         },
         {
-          text: `Készíts egy saját Angular pipe-ot (https://angular.io/guide/pipes)!
+          text: `Készíts egy saját Angular pipe-ot (https://angular.dev/guide/templates/pipes)!
 
 Ez a pipe az előző feladatban létrehozott objektumra működjön és formázza meg a nevet a következő formátumra:
 _titulus vezetéknév középsőnév keresztnév_
@@ -269,12 +270,13 @@ Segítség:
           xp: 1
         },
         {
-          text: `A gombra kattintva a gomb kerüljön _disabled_ állapotba, hogy a felhasználó ne tudjon véletlenül többször rákattintani.`,
+          text: `Készíts egy direktívát, amit helyezz is el az előző feladatban létrehozott gombra.
+          A direktívában implementáld, hogy a gombra kattintva a gomb kerüljön _disabled_ állapotba, hogy a felhasználó ne tudjon véletlenül többször rákattintani.`,
           xp: 1
         },
         {
           text: `Az előző feladatban beállított _disabled_ állapot a gombon szűnjön meg, amint az első feladat
-          HTTP/mock kérése befejeződött.`,
+          HTTP/mock kérése befejeződött. Természetesen ez a logika is a direktíva kódjában kerüljön megvalósításra.`,
           xp: 1
         },
         {
@@ -316,7 +318,7 @@ https://swimlane.github.io/ngx-charts/#/ngx-charts/bar-vertical`,
         {
           text: `Készíts egy oszlopdiagramot (column chart) fix, beégetett adatokkal, amelyben megtippeled a csoport beadandóra szerzett jegyeinek eloszlását.
 
-- A diagramon legyen 6 oszlop, 1-től 5-ig terjedően a lehetséges jegyekhez valamint egy külön oszlop a "Feladta és szégyenli magát." kategóriának.
+- A diagramon legyen 6 oszlop, 1-től 5-ig terjedően a lehetséges jegyekhez valamint egy külön oszlop a "Feladta és szégyenli magát" kategóriának.
 - A kurzust összesen 32 fő vette fel - az oszlopok értékeinek összege ennek megfelelően legyen pontosan 32.`,
           xp: 1
         },
@@ -380,9 +382,9 @@ Ebben az esetben jelenjen meg egy további "Törlés" gomb is, amellyel a kép e
       subTasks: [
         {
           text: `Helyezz el a felületen egy drag & drop eseményekkel átrendezhető listát, amely 3 opciót tartalmaz:
-          - _config-default.yaml_
-          - _config-course.yaml_
-          - _config-user.yaml_
+- _config-default.yaml_
+- _config-course.yaml_
+- _config-user.yaml_
 
 A listaelemek tetszőleges sorrendbe húzhatók, így a felhasználó meg tudja határozni a fájlok prioritását.
 Ennek a következő részfeladatokban lesz jelentősége.
@@ -394,7 +396,7 @@ Segítség: https://material.angular.io/cdk/drag-drop/overview`,
           text: `Az _assets/yamls_ könyvtárban található a három kapcsolódó YAML fájl.
 
 A feladathoz tartozó komponens inicializációjakor (_OnInit_) töltsd be mindhárom fájl tartalmát és használj egy RxJS
-operátort arra,hogy a 3 fájl tartalmát akkor logold ki (_console.log_) amikor már mindhárom fájl beérkezett.
+operátort arra, hogy a 3 fájl tartalmát akkor logold ki (_console.log_) amikor már mindhárom fájl beérkezett.
 
 Segítség: https://rxjs.dev/api/operators`,
           xp: 1
@@ -440,7 +442,7 @@ Az így lértehozott, mergelt objektumot JSON formátumban írasd ki a komponens
       subTasks: [
         {
           text: `Hozz létre egy service-t, _GeneratorService_ néven!
-          A service tartalmazzon egy függvényt, amely egy paraméterként megadott szám alapján személyek tömbjét generálja.
+          A service tartalmazzon egy függvényt, amely egy paraméterként megadott számú személyek tömbjét generálja le.
 
 A generált személyekhez az alábbi mezők tartozzanak:
 - _név_: teljes név
@@ -456,8 +458,8 @@ komponensben elérhető változóba.`,
         },
         {
           text: `Készíts egy táblázatot két oszloppal:
-          - _név_
-          - _születési év
+- _név_
+- _születési év_
 
 A táblázat jelenítse meg a generált személyeket virtual scrolling használatával!
 
@@ -484,7 +486,7 @@ Segítség: https://ng.ant.design/components/tooltip/en`,
 - A keresés történjen mindhárom mezőben.
 - A keresés legyen kis- és nagybetű-független.
 - A szűrés ne történjen minden billentyűleütésre, csak akkor, ha a felhasználó legalább 500ms-ig nem gépel tovább.
-Ehhez célszerá az RxJS _debounceTime_ operátorát használni: https://rxjs.dev/api/operators/debounceTime
+Ehhez célszerű az RxJS _debounceTime_ operátorát használni: https://rxjs.dev/api/operators/debounceTime
 
 Segítség: https://ng.ant.design/components/input`,
           xp: 1
