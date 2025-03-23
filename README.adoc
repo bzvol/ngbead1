@@ -4,30 +4,30 @@
 
 === Task 1
 
-==== A - Styling
+==== A - Event handling
 
-==== B - Responsivity
+==== B - Routing & Breadcrumb
 
 === Task 2
 
-==== A - Component
+==== A - Form validation
 
-==== B - Form validation
+==== B - Component
 
 === Task 3
 
 ==== A - Pipe
 
-==== B - Translate
+==== B - Directive
 
 === Task 4
 
-==== A - Directive
+==== A - ngx-charts
 
-==== B - Modal & Image Cropper
+==== B - ngx-image-cropper & modal
 
 === Task 5
 
-==== A - Tree & Clipboard
+==== A - Drag&Drop, YAML, RxJS
 
 ==== B - Virtual scrolling
