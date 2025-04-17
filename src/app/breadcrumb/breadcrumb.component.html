@@ -3,7 +3,19 @@
     <nz-breadcrumb-item>Várható eredmény</nz-breadcrumb-item>
   } @else {
     <nz-breadcrumb-item>Feladatok</nz-breadcrumb-item>
-    <nz-breadcrumb-item>{{ taskIndex }}</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <nz-select
+        [(ngModel)]="taskIndex"
+        (ngModelChange)="selectTask($event)"
+      >
+        @for (task of taskRange; track task;) {
+          <nz-option
+            [nzValue]="task"
+            [nzLabel]="task"
+          ></nz-option>
+        }
+      </nz-select>
+    </nz-breadcrumb-item>
     <nz-breadcrumb-item *ngIf="selectedTask">{{ selectedTask }}</nz-breadcrumb-item>
   }
 </nz-breadcrumb>

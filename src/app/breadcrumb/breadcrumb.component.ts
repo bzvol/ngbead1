@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Location} from "@angular/common";
+import {RouterService} from "../_services/router.service";
+import {tasks} from "../configuration/tasks";
 
 @Component({
   selector: 'app-breadcrumb',
@@ -9,11 +10,14 @@ import {Location} from "@angular/common";
   standalone: false
 })
 export class BreadcrumbComponent implements OnInit {
+  readonly taskRange = Array.from({ length: tasks.length }, (_, i) => i + 1);
+
   page?: 'task' | 'summary';
   taskIndex: number = 1;
   selectedTask?: 'A' | 'B';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private routerService: RouterService) {
   }
 
   ngOnInit() {
@@ -34,5 +38,9 @@ export class BreadcrumbComponent implements OnInit {
         this.selectedTask = params['task'];
       }
     });
+  }
+
+  selectTask(taskIndex: number) {
+    this.routerService.routeToTask(taskIndex, this.selectedTask);
   }
 }

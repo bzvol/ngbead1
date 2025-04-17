@@ -32,6 +32,8 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzBreadCrumbModule} from "ng-zorro-antd/breadcrumb";
+import {NzSelectModule} from "ng-zorro-antd/select";
+import {FormsModule} from "@angular/forms";
 
 
 const zorroModules = [
@@ -44,6 +46,7 @@ const zorroModules = [
   NzMenuModule,
   NzModalModule,
   NzBreadCrumbModule,
+  NzSelectModule,
 ]
 
 @NgModule({
@@ -73,6 +76,7 @@ const zorroModules = [
     BrowserAnimationsModule,
     MarkdownModule.forRoot(),
     RouterModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
