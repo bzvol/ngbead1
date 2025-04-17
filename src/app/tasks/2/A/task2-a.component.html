@@ -1,1 +1,81 @@
-<p>task2-a works!</p>
+<form nz-form [formGroup]="systemReqForm" (ngSubmit)="onSubmit()">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="cpu" nzRequired>Processzor</nz-form-label>
+    <nz-form-control [nzSpan]="14" nzErrorTip="Válaszd ki a processzort!">
+      <nz-select formControlName="cpu" id="cpu">
+        @for (cpu of CPUs; track cpu.name) {
+          <nz-option nzCustomContent [nzLabel]="cpu.name" [nzValue]="cpu.name">
+            <nz-row>
+              <nz-col [nzSpan]="12">{{ cpu.name }}</nz-col>
+              <nz-col [nzSpan]="12" class="score">
+                <nz-tag [nzColor]="getTagColorFromScore(cpu.score)">
+                  <nz-icon nzType="dashboard" />
+                  <span>Score: {{ cpu.score.toLocaleString() }}</span>
+                </nz-tag>
+              </nz-col>
+            </nz-row>
+          </nz-option>
+        }
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="gpu" nzRequired>Videokártya</nz-form-label>
+    <nz-form-control [nzSpan]="14" nzErrorTip="Válaszd ki a videokártyát!">
+      <nz-select formControlName="gpu" id="gpu">
+        @for (gpu of GPUs; track gpu.name) {
+          <nz-option nzCustomContent [nzLabel]="gpu.name" [nzValue]="gpu.name">
+            <nz-row>
+              <nz-col [nzSpan]="12">{{ gpu.name }}</nz-col>
+              <nz-col [nzSpan]="12" class="score">
+                <nz-tag nzColor="cyan">
+                  <nz-icon nzType="dashboard" />
+                  <span>VRAM: {{ gpu.vramGB.toLocaleString() }} GB</span>
+                </nz-tag>
+              </nz-col>
+            </nz-row>
+          </nz-option>
+        }
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzSpan]="24" [nzOffset]="4">
+      <label nz-checkbox formControlName="supportsRayTracing">Ray Tracing támogatás</label>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="memory" nzRequired>Memória</nz-form-label>
+    <nz-form-control [nzSpan]="4" nzErrorTip="Add meg a memória méretét!">
+      <nz-input-number
+        formControlName="memory"
+        id="memory"
+        [nzMin]="8"
+        [nzMax]="128"
+        [nzStep]="8"
+      >
+        <span nzInputAddonAfter>GB</span>
+      </nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="storage" nzRequired>Tárhely</nz-form-label>
+    <nz-form-control [nzSpan]="4" nzErrorTip="Add meg a tárhely méretét!">
+      <nz-input-number
+              formControlName="storage"
+              id="storage"
+              [nzMin]="128"
+              [nzMax]="4096"
+              [nzStep]="128"
+      >
+        <span nzInputAddonAfter>GB</span>
+      </nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzSpan]="24" [nzOffset]="4">
+      <button nz-button nzType="primary">Követelmények ellenőrzése</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
