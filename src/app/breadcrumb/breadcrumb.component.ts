@@ -40,7 +40,11 @@ export class BreadcrumbComponent implements OnInit {
     });
   }
 
-  selectTask(taskIndex: number) {
-    this.routerService.routeToTask(taskIndex, this.selectedTask);
+  selectTaskIndex(taskIndex: number) {
+    this.routerService.routeToTask(taskIndex, this.selectedTask)
+  }
+
+  selectTask(task?: 'A' | 'B') {
+    this.routerService.routeToTask(this.taskIndex, task);
   }
 }

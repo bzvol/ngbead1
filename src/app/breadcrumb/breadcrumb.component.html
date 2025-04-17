@@ -6,7 +6,7 @@
     <nz-breadcrumb-item>
       <nz-select
         [(ngModel)]="taskIndex"
-        (ngModelChange)="selectTask($event)"
+        (ngModelChange)="selectTaskIndex($event)"
       >
         @for (task of taskRange; track task;) {
           <nz-option
@@ -16,6 +16,16 @@
         }
       </nz-select>
     </nz-breadcrumb-item>
-    <nz-breadcrumb-item *ngIf="selectedTask">{{ selectedTask }}</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <nz-select
+        [(ngModel)]="selectedTask"
+        (ngModelChange)="selectTask($event)"
+        nzAllowClear
+        nzPlaceHolder="Válassz feladatot"
+      >
+        <nz-option nzValue="A" nzLabel="A"></nz-option>
+        <nz-option nzValue="B" nzLabel="B"></nz-option>
+      </nz-select>
+    </nz-breadcrumb-item>
   }
 </nz-breadcrumb>
