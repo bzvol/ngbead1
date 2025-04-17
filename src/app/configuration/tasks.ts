@@ -45,7 +45,7 @@ A játék működjön 3x3-as vagy annál nagyobb méret esetén.`,
     },
     B: {
       imageUrl: 'assets/images/tasks/1/B/plot_of_lost.png',
-      story: `Ez a feladat annyiban tér el a többitől, hogy nem a _Task2BComponent_-ben kell megoldani, hanem globálisan a projektben.
+      story: `Ez a feladat annyiban tér el a többitől, hogy nem a _Task1BComponent_-ben kell megoldani, hanem globálisan a projektben.
       A cél egy közös navigáció létrehozása, amely lehetővé teszi, hogy a felhasználó egyszerűen mozoghasson az oldalak között.`,
       subTasks: [
         {
