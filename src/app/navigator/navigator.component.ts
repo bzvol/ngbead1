@@ -26,7 +26,7 @@ export class NavigatorComponent implements OnInit {
         if (params['index']) {
           this.currentIndex = +params['index'];
         }
-        if (params['taks']) {
+        if (params['task']) {
           this.selectedTask = params['task'];
         }
       });
