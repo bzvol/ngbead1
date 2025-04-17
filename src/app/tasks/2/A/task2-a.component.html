@@ -90,6 +90,8 @@
 <ng-template #gpuErrorTpl let-control>
   @if (control.hasError('required')) {
     Ez a mező kötelező!
+  } @else if (systemReqForm.hasError('invalidGpuWithRayTracing') && (systemReqForm.touched || systemReqForm.dirty)) {
+    A megadott paraméterekkel rendelkező GPU nem létezik!
   } @else if (control.hasError('invalidGpu')) {
     Ilyen videokártya nem létezik!
   } @else if (control.hasError('insufficientGpu')) {

@@ -25,7 +25,8 @@ export class Task2AComponent {
       memory: [16, [Validators.required, Validators.min(16)]],
       storage: [512, [Validators.required, Validators.min(100)]],
     }, {
-      updateOn: 'submit'
+      updateOn: 'submit',
+      validators: this.gpuWithRayTracingValidator(4)
     });
   }
 
@@ -53,6 +54,27 @@ export class Task2AComponent {
 
       if (gpu.vramGB < minVRAM) {
         return {insufficientGpu: {minVRAM}};
+      }
+
+      return null;
+    }
+  }
+
+  private gpuWithRayTracingValidator(minVRAM: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const gpuName = control.get('gpu');
+      if (!gpuName) {
+        return {invalidGpu: true};
+      }
+      const gpu = GPUs.find(gpu => gpu.name === gpuName.value);
+      if (!gpu) {
+        return {invalidGpu: true};
+      }
+
+      const supportsRayTracing = control.get('supportsRayTracing')!.value;
+
+      if (supportsRayTracing && gpu.vramGB < minVRAM) {
+        return {invalidGpuWithRayTracing: true};
       }
 
       return null;
