@@ -35,12 +35,3 @@ export const GPUs: GPUData[] = [
   { name: 'NVIDIA GeForce RTX 2060', vramGB: 6 },
   { name: 'NVIDIA GeForce GT 1030', vramGB: 2 }
 ];
-
-export const systemReqs: Record<string, SystemRequirements> = {
-  'DOOM: The Dark Ages': {
-    cpuScore: 30000,
-    vramGB: 6,
-    memoryGB: 16,
-    storageGB: 100
-  }
-};

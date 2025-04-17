@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {CPUs, GPUs, systemReqs} from "../../../_constants/hardware";
+import {AbstractControl, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {CPUs, GPUs} from "../../../_constants/hardware";
 import {SystemRequirements} from "../../../_entities/hardware";
 
 @Component({
@@ -15,42 +15,61 @@ export class Task2AComponent {
   readonly CPUs = CPUs;
   readonly GPUs = GPUs;
 
-  readonly systemReqForm = new FormGroup({
-    cpu: new FormControl(CPUs[0].name),
-    gpu: new FormControl(GPUs[0].name),
-    supportsRayTracing: new FormControl(false),
-    memory: new FormControl(16),
-    storage: new FormControl(512),
-  });
+  readonly systemReqForm;
 
-  constructor() {
+  constructor(private fb: NonNullableFormBuilder) {
+    this.systemReqForm = this.fb.group({
+      cpu: [CPUs[0].name, [Validators.required, this.cpuValidator(14500)]],
+      gpu: [GPUs[0].name, [Validators.required, this.gpuValidator(8)]],
+      supportsRayTracing: [false, [Validators.requiredTrue]],
+      memory: [16, [Validators.required, Validators.min(16)]],
+      storage: [512, [Validators.required, Validators.min(100)]],
+    }, {
+      updateOn: 'submit'
+    });
+  }
+
+  private cpuValidator(minScore: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const cpu = CPUs.find(cpu => cpu.name === control.value);
+      if (!cpu) {
+        return {invalidCpu: true};
+      }
+
+      if (cpu.score < minScore) {
+        return {insufficientCpu: {minScore}};
+      }
+
+      return null;
+    }
+  }
+
+  private gpuValidator(minVRAM: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const gpu = GPUs.find(gpu => gpu.name === control.value);
+      if (!gpu) {
+        return {invalidGpu: true};
+      }
+
+      if (gpu.vramGB < minVRAM) {
+        return {insufficientGpu: {minVRAM}};
+      }
+
+      return null;
+    }
   }
 
   onSubmit() {
-    const cpuName = this.systemReqForm.get('cpu')?.value;
-    const cpu = this.CPUs.find(cpu => cpu.name === cpuName);
-    const gpuName = this.systemReqForm.get('gpu')?.value;
-    const gpu = this.GPUs.find(gpu => gpu.name === gpuName);
-    const supportsRayTracing = this.systemReqForm.get('supportsRayTracing')?.value;
-    const memory = this.systemReqForm.get('memory')?.value;
-    const storage = this.systemReqForm.get('storage')?.value;
-
-    const passesReqs = this.checkReqs(systemReqs[this.game], {
-      cpuScore: cpu?.score || 0,
-      vramGB: gpu?.vramGB || 0,
-      memoryGB: memory || 0,
-      storageGB: storage || 0,
-    })
-
-    alert(`A megadott hardverek ${!passesReqs ? 'nem felelnek meg' : 'megfelelnek'} ` +
-      `a ${this.game} minimum rendszerkövetelményeinek.`);
-  }
-
-  private checkReqs(reqs: SystemRequirements, specs: SystemRequirements,) {
-    return specs.cpuScore >= reqs.cpuScore &&
-      specs.vramGB >= reqs.vramGB &&
-      specs.memoryGB >= reqs.memoryGB &&
-      specs.storageGB >= reqs.storageGB;
+    if (this.systemReqForm.valid) {
+      alert(`A megadott rendszer specifikációk megfelelnek a ${this.game} minimális rendszerkövetelményeinek.`);
+    } else {
+      Object.values(this.systemReqForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity();
+        }
+      });
+    }
   }
 
   getTagColorFromScore(score: number): 'red' | 'gold' | 'geekblue' {

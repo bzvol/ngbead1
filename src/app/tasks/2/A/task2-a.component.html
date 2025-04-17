@@ -1,7 +1,7 @@
 <form nz-form [formGroup]="systemReqForm" (ngSubmit)="onSubmit()">
   <nz-form-item>
     <nz-form-label [nzSpan]="4" nzFor="cpu" nzRequired>Processzor</nz-form-label>
-    <nz-form-control [nzSpan]="14" nzErrorTip="Válaszd ki a processzort!">
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="cpuErrorTpl">
       <nz-select formControlName="cpu" id="cpu">
         @for (cpu of CPUs; track cpu.name) {
           <nz-option nzCustomContent [nzLabel]="cpu.name" [nzValue]="cpu.name">
@@ -10,7 +10,7 @@
               <nz-col [nzSpan]="12" class="score">
                 <nz-tag [nzColor]="getTagColorFromScore(cpu.score)">
                   <nz-icon nzType="dashboard" />
-                  <span>Score: {{ cpu.score.toLocaleString() }}</span>
+                  <span>Pontszám: {{ cpu.score.toLocaleString() }}</span>
                 </nz-tag>
               </nz-col>
             </nz-row>
@@ -21,7 +21,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4" nzFor="gpu" nzRequired>Videokártya</nz-form-label>
-    <nz-form-control [nzSpan]="14" nzErrorTip="Válaszd ki a videokártyát!">
+    <nz-form-control [nzSpan]="14" [nzErrorTip]="gpuErrorTpl">
       <nz-select formControlName="gpu" id="gpu">
         @for (gpu of GPUs; track gpu.name) {
           <nz-option nzCustomContent [nzLabel]="gpu.name" [nzValue]="gpu.name">
@@ -40,19 +40,18 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control [nzSpan]="24" [nzOffset]="4">
+    <nz-form-control [nzSpan]="24" [nzOffset]="4" nzErrorTip="A ray tracing támogatás kötelező!">
       <label nz-checkbox formControlName="supportsRayTracing">Ray Tracing támogatás</label>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4" nzFor="memory" nzRequired>Memória</nz-form-label>
-    <nz-form-control [nzSpan]="4" nzErrorTip="Add meg a memória méretét!">
+    <nz-form-control [nzSpan]="4" [nzErrorTip]="memoryErrorTpl">
       <nz-input-number
         formControlName="memory"
         id="memory"
-        [nzMin]="8"
+        [nzMin]="1"
         [nzMax]="128"
-        [nzStep]="8"
       >
         <span nzInputAddonAfter>GB</span>
       </nz-input-number>
@@ -60,13 +59,12 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4" nzFor="storage" nzRequired>Tárhely</nz-form-label>
-    <nz-form-control [nzSpan]="4" nzErrorTip="Add meg a tárhely méretét!">
+    <nz-form-control [nzSpan]="4" [nzErrorTip]="storageErrorTpl">
       <nz-input-number
               formControlName="storage"
               id="storage"
-              [nzMin]="128"
+              [nzMin]="32"
               [nzMax]="4096"
-              [nzStep]="128"
       >
         <span nzInputAddonAfter>GB</span>
       </nz-input-number>
@@ -79,3 +77,38 @@
   </nz-form-item>
 </form>
 
+<ng-template #cpuErrorTpl let-control>
+  @if (control.hasError('required')) {
+    Ez a mező kötelező!
+  } @else if (control.hasError('invalidCpu')) {
+    Ilyen processzor nem létezik!
+  } @else if (control.hasError('insufficientCpu')) {
+    A processzor pontszáma legalább {{ control.errors['insufficientCpu']['minScore'].toLocaleString() }} kell legyen!
+  }
+</ng-template>
+
+<ng-template #gpuErrorTpl let-control>
+  @if (control.hasError('required')) {
+    Ez a mező kötelező!
+  } @else if (control.hasError('invalidGpu')) {
+    Ilyen videokártya nem létezik!
+  } @else if (control.hasError('insufficientGpu')) {
+    A videokártya legalább {{ control.errors['insufficientGpu']['minVRAM'] }} GB VRAM-mal kell rendelkezzen!
+  }
+</ng-template>
+
+<ng-template #memoryErrorTpl let-control>
+  @if (control.hasError('required')) {
+    Ez a mező kötelező!
+  } @else if (control.hasError('min')) {
+    A memória legalább {{ control.errors['min']['min'] }} GB kell legyen!
+  }
+</ng-template>
+
+<ng-template #storageErrorTpl let-control>
+  @if (control.hasError('required')) {
+    Ez a mező kötelező!
+  } @else if (control.hasError('min')) {
+    A tárhely legalább {{ control.errors['min']['min'] }} GB kell legyen!
+  }
+</ng-template>
