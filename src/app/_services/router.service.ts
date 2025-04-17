@@ -24,6 +24,9 @@ export class RouterService {
     );
   }
 
+  // `ActivatedRoute.params` is NOT updated after calling `location.go`.
+  // So in order to avoid using an ugly manual function to get params from location,
+  // I rather replaced the usages of this function with `routeToTask`.
   routeToTaskWithoutReload(index: number, task?: 'A' | 'B') {
     const url = this.router
       .createUrlTree(

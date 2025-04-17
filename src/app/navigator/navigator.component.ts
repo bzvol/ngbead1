@@ -56,7 +56,7 @@ export class NavigatorComponent implements OnInit {
     }
     if (this.currentIndex <= tasks.length) {
       this.selectedTask = undefined;
-      this.routerService.routeToTaskWithoutReload(this.currentIndex, undefined);
+      this.routerService.routeToTask/*WithoutReload*/(this.currentIndex, undefined);
     } else {
       this.routerService.routeToSummary();
     }
@@ -64,7 +64,7 @@ export class NavigatorComponent implements OnInit {
 
   selectTask(task?: 'A' | 'B') {
     this.selectedTask = task;
-    this.routerService.routeToTaskWithoutReload(this.currentIndex, task);
+    this.routerService.routeToTask/*WithoutReload*/(this.currentIndex, task);
   }
 
 }
