@@ -1,0 +1,9 @@
+<nz-breadcrumb *ngIf="page">
+  @if (page === "summary") {
+    <nz-breadcrumb-item>Várható eredmény</nz-breadcrumb-item>
+  } @else {
+    <nz-breadcrumb-item>Feladatok</nz-breadcrumb-item>
+    <nz-breadcrumb-item>{{ taskIndex }}</nz-breadcrumb-item>
+    <nz-breadcrumb-item *ngIf="selectedTask">{{ selectedTask }}</nz-breadcrumb-item>
+  }
+</nz-breadcrumb>

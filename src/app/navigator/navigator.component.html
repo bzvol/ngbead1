@@ -1,6 +1,7 @@
 <ng-container>
   <ng-container *ngFor="let task of tasks; let index = index">
     <ng-container *ngIf="index + 1 === currentIndex">
+      <app-breadcrumb></app-breadcrumb>
       <app-task-selector [index]="index"
                          [ATask]="tasks[index].A"
                          [BTask]="tasks[index].B"

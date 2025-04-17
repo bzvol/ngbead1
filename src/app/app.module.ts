@@ -21,6 +21,7 @@ import {Task4AComponent} from "src/app/tasks/4/A/task4-a.component";
 import {Task4BComponent} from "src/app/tasks/4/B/task4-b.component";
 import {Task5AComponent} from "src/app/tasks/5/A/task5-a.component";
 import {Task5BComponent} from "src/app/tasks/5/B/task5-b.component";
+import {BreadcrumbComponent} from "./breadcrumb/breadcrumb.component";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzLayoutModule} from "ng-zorro-antd/layout";
 import {NzMenuModule} from "ng-zorro-antd/menu";
@@ -30,6 +31,7 @@ import {NzListModule} from "ng-zorro-antd/list";
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzBreadCrumbModule} from "ng-zorro-antd/breadcrumb";
 
 
 const zorroModules = [
@@ -40,7 +42,8 @@ const zorroModules = [
   NzLayoutModule,
   NzListModule,
   NzMenuModule,
-  NzModalModule
+  NzModalModule,
+  NzBreadCrumbModule,
 ]
 
 @NgModule({
@@ -60,7 +63,8 @@ const zorroModules = [
     Task5BComponent,
     TaskSelectorComponent,
     SummaryComponent,
-    PreviewComponent
+    PreviewComponent,
+    BreadcrumbComponent
   ],
   imports: [
     ...zorroModules,
