@@ -7,19 +7,23 @@ import {SummaryComponent} from "src/app/summary/summary.component";
 const routes: Routes = [
   {
     path: PageRoutes.summary,
-    component: SummaryComponent
+    component: SummaryComponent,
+    title: 'Summary'
   },
   {
     path: `${PageRoutes.task}/:index/:task`,
-    component: NavigatorComponent
+    component: NavigatorComponent,
+    title: route => `${route.params['index']}. ${route.params['task']} feladat`
   },
   {
     path: `${PageRoutes.task}/:index`,
-    component: NavigatorComponent
+    component: NavigatorComponent,
+    title: route => `${route.params['index']}. feladat`
   },
   {
     path: PageRoutes.task,
-    component: NavigatorComponent
+    component: NavigatorComponent,
+    title: 'Feladatok'
   },
   {
     path: '',
