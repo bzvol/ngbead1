@@ -6,8 +6,10 @@ import {Name} from "../_interfaces/name";
 })
 export class ComposeNamePipe implements PipeTransform {
 
-  transform(value: Name): string {
-    return [value.title, value.lastName, value.middleName, value.firstName]
+  transform(value: Name, lang: 'hu' | 'en' = 'hu'): string {
+    return (lang === 'hu'
+      ? [value.title, value.lastName, value.middleName, value.firstName]
+      : [value.title, value.firstName, value.middleName, value.lastName])
       .filter(Boolean)
       .join(' ');
   }
