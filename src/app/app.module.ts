@@ -38,6 +38,8 @@ import {NzFormModule} from "ng-zorro-antd/form";
 import {NzTagComponent} from "ng-zorro-antd/tag";
 import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
+import {NzInputModule} from "ng-zorro-antd/input";
+import {ComposeNamePipe} from "./_pipes/compose-name.pipe";
 
 
 const zorroModules = [
@@ -51,6 +53,7 @@ const zorroModules = [
   NzModalModule,
   NzBreadCrumbModule,
   NzFormModule,
+  NzInputModule,
   NzInputNumberModule,
   NzSelectModule,
   NzCheckboxModule,
@@ -86,6 +89,7 @@ const zorroModules = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    ComposeNamePipe,
   ],
   providers: [],
   bootstrap: [AppComponent]

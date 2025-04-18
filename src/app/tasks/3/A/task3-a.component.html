@@ -1,1 +1,37 @@
-<p>task3-a works!</p>
+<form nz-form [formGroup]="nameForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="title">Titulus</nz-form-label>
+    <nz-form-control [nzSpan]="4">
+      <input nz-input formControlName="title" id="title" placeholder="Titulus..."/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="first-name" nzRequired>Keresztnév</nz-form-label>
+    <nz-form-control [nzSpan]="8" nzErrorTip="Adj meg egy keresztnevet!">
+      <input nz-input formControlName="firstName" id="first-name" placeholder="Keresztnév..." required/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="middle-name">Középső név</nz-form-label>
+    <nz-form-control [nzSpan]="8">
+      <input nz-input formControlName="middleName" id="middle-name" placeholder="Középső név..."/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzFor="last-name" nzRequired>Vezetéknév</nz-form-label>
+    <nz-form-control [nzSpan]="8" nzErrorTip="Adj meg egy vezetéknevet!">
+      <input nz-input formControlName="lastName" id="last-name" placeholder="Vezetéknév..." required/>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<div nz-row id="full-name" nzGutter="16">
+  <nz-col [nzSpan]="4" id="full-name-col">
+    Teljes név:
+  </nz-col>
+  <nz-col [nzSpan]="20">
+    <ng-container *ngIf="nameForm.valid && name">
+      {{ name | composeName }}
+    </ng-container>
+  </nz-col>
+</div>
