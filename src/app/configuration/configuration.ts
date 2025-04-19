@@ -62,6 +62,7 @@ export const configuration = [
       subTasks: {
         1: false,
         2: false,
+        1: true,
         3: false,
         4: false
       }
