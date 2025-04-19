@@ -40,6 +40,7 @@ import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {ComposeNamePipe} from "./_pipes/compose-name.pipe";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 
 const zorroModules = [
@@ -90,6 +91,7 @@ const zorroModules = [
     FormsModule,
     ReactiveFormsModule,
     ComposeNamePipe,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
