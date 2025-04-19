@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {configuration} from "../../../configuration/configuration";
 import {LegendPosition} from "@swimlane/ngx-charts";
 
+type ChartData = {name: string, value: number}[];
+
 @Component({
     selector: 'app-task4-a',
     templateUrl: './task4-a.component.html',
@@ -13,7 +15,7 @@ export class Task4AComponent {
 
   constructor() { }
 
-  get solvedTasks() {
+  get solvedTasks(): ChartData {
     return configuration
       .flatMap((task, index) => [
         {taskNumber: `${index + 1}. A feladat`, task: task.A},
@@ -26,5 +28,16 @@ export class Task4AComponent {
           .filter(value => value)
           .length
       }));
+  }
+
+  get assignmentGrades(): ChartData {
+    return [
+      {name: "1", value: 5},
+      {name: "2", value: 9},
+      {name: "3", value: 4},
+      {name: "4", value: 6},
+      {name: "5", value: 6},
+      {name: "Feladta és szégyenli magát", value: 2},
+    ];
   }
 }

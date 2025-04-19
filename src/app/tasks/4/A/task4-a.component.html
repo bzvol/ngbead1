@@ -11,3 +11,22 @@
   [labels]="true"
 >
 </ngx-charts-pie-chart>
+
+<h2>A beadandó eredményeinek eloszlása</h2>
+
+<ngx-charts-bar-vertical
+  [view]="[700, 400]"
+  [results]="assignmentGrades"
+  scheme="vivid"
+  [animations]="false"
+  [legend]="true"
+  legendTitle="Jelmagyarázat"
+  [legendPosition]="legendPosition"
+  [xAxis]="true"
+  [yAxis]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  xAxisLabel="Jegy"
+  yAxisLabel="Darab"
+>
+</ngx-charts-bar-vertical>
